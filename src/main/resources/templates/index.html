@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Időjárás Dashboard</title>
 
-  <!-- 1. Google Font -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
 
-
-  <link
-    rel="stylesheet"
-    href="/css/style.css"
-    th:href="@{/css/style.css}" />
+  <!-- Külső CSS -->
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
 </head>
 <body>
   <div class="container">
     <h1>Időjárás-előrejelző</h1>
-    <form action="/forecast" method="get">
+    <form th:action="@{/forecast}" method="get">
       <input
         type="text"
         name="city"
         placeholder="Város neve"
-        required />
+        required
+        th:value="${param.city}" />
       <button type="submit">Lekérdezés</button>
     </form>
   </div>

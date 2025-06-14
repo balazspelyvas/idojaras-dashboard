@@ -2,36 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Időjárás Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${weather != null} ? ${weather.city} + ' időjárása' : 'Hiba'">Forecast</title>
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
-
-  <link rel="stylesheet" href="/css/style.css">
-  
+  <!-- Külső CSS -->
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
 </head>
 <body>
-  <h1 th:text="'Előrejelzés: ' + ${weather.city}"></h1>
-  <a href="/">← Új lekérdezés</a>
-  <table border="1" cellpadding="5">
-    <thead>
-      <tr>
-        <th>Időpont</th>
-        <th>Hőmérséklet (°C)</th>
-        <th>Leírás</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="entry : ${weather.forecastList}">
-        <td th:text="${entry.dateTime}"></td>
-        <td th:text="${entry.temperature}"></td>
-        <td th:text="${entry.description}"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="container">
+    <!-- Hibaüzenet, ha nincs weather modell -->
+    <div th:if="${error != null}" class="error" th:text="${error}"></div>
+
+    <!-- Előrejelzés címe -->
+    <h1 th:if="${weather != null}"
+        th:text="'Előrejelzés: ' + ${weather.city}"></h1>
+
+    <!-- Táblázat -->
+    <div class="table-wrapper" th:if="${weather != null}">
+      <table>
+        <thead>
+          <tr>
+            <th>Időpont</th>
+            <th>Hőmérséklet (°C)</th>
+            <th>Leírás</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="entry : ${weather.forecastList}">
+            <td th:text="${entry.dateTime}"></td>
+            <td th:text="${entry.temperature}"></td>
+            <td th:text="${entry.description}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Vissza link -->
+    <a th:href="@{/" class="back-link">← Új lekérdezés</a>
+  </div>
 </body>
 </html>
