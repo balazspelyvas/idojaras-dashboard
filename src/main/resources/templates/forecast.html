@@ -2,7 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title th:text="${weather.city} + ' időjárása'">Forecast</title>
+  <title>Időjárás Dashboard</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+  <!-- A Te CSS-ed -->
+  <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
   <h1 th:text="'Előrejelzés: ' + ${weather.city}"></h1>

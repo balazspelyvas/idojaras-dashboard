@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Időjárás Dashboard</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+  <!-- A Te CSS-ed -->
+  <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-  <h1>Időjárás-előrejelző</h1>
-  <form action="/forecast" method="get">
-    <input type="text" name="city" placeholder="Város neve" required/>
-    <button type="submit">Lekérdezés</button>
-  </form>
+  <div class="container">
+    <h1>Időjárás-előrejelző</h1>
+    <form action="/forecast" method="get">
+      <input type="text" name="city" placeholder="Város neve" required/>
+      <button type="submit">Lekérdezés</button>
+    </form>
+  </div>
 </body>
 </html>
