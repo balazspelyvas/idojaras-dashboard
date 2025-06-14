@@ -2,22 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Időjárás Dashboard</title>
 
-  <!-- Google Font -->
+  <!-- 1. Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
-  <!-- A Te CSS-ed -->
-  <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}" />
+
+  <link
+    rel="stylesheet"
+    href="/css/style.css"
+    th:href="@{/css/style.css}" />
 </head>
 <body>
   <div class="container">
     <h1>Időjárás-előrejelző</h1>
     <form action="/forecast" method="get">
-      <input type="text" name="city" placeholder="Város neve" required/>
+      <input
+        type="text"
+        name="city"
+        placeholder="Város neve"
+        required />
       <button type="submit">Lekérdezés</button>
     </form>
   </div>
