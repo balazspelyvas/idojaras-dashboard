@@ -27,4 +27,15 @@ public class WeatherController {
         model.addAttribute("weather", response);
         return "forecast";
     }
+    
+    @GetMapping("/forecast")
+    public String forecast(@RequestParam String city, Model model) {
+      try {
+        WeatherResponse resp = weatherService.getForecast(city).block();
+        model.addAttribute("weather", resp);
+      } catch (Exception ex) {
+        model.addAttribute("error", "Nem sikerült lekérdezni: " + ex.getMessage());
+      }
+      return "forecast";
+    }
 }
